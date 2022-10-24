@@ -80,6 +80,8 @@ def logoutView(request):
         res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
         res.delete_cookie("X-CSRFToken")
         res.delete_cookie("csrftoken")
+        res["X-CSRFToken"]=None
+        
         return res
     except:
         raise rest_exceptions.ParseError("Invalid token")

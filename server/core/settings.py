@@ -54,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -134,7 +136,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000"
 ]
 CORS_ALLOW_CREDENTIALS = True
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTP_ONLY = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000"
@@ -183,12 +185,12 @@ SIMPLE_JWT = {
     # A string like "example.com", or None for standard domain cookie.
     'AUTH_COOKIE_DOMAIN': None,
     # Whether the auth cookies should be secure (https:// only).
-    'AUTH_COOKIE_SECURE': False,
+    'AUTH_COOKIE_SECURE': True, 
     # Http only cookie flag.It's not fetch by javascript.
     'AUTH_COOKIE_HTTP_ONLY': True,
     'AUTH_COOKIE_PATH': '/',        # The path of the auth cookie.
     # Whether to set the flag restricting cookie leaks on cross-site requests. This can be 'Lax', 'Strict', or None to disable the flag.
-    'AUTH_COOKIE_SAMESITE': "Lax",
+    'AUTH_COOKIE_SAMESITE': "None", # TODO: Modify to Lax
 }
 
 
